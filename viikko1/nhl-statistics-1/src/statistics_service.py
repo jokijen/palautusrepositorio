@@ -42,7 +42,7 @@ class StatisticsService:
             sorting_criteria = sort_by_points
         elif sort_by == SortBy.GOALS:
             sorting_criteria = sort_by_goals
-        elif sort_by == SortBy.ASSISTS:
+        else:
             sorting_criteria = sort_by_assists
 
         sorted_players = sorted(
