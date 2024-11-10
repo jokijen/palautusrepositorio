@@ -15,6 +15,3 @@ class Player:
     
     def is_nationality(self, nationality):
         return self.nationality == nationality
-
-    def top_scorers_by_nationality(self, country):
-        None
