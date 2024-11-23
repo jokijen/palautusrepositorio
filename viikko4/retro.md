@@ -17,5 +17,3 @@ Kategorioiden alle kerätään kommentteja osallistujilta ja lopuksi keskustella
 ### Glad, Sad, Mad
 
 Osallistujat kirjaavat lyhyesti korteille sprintin aikana esiin tulleita haasteita, muutoksia tai havaintoja. Sitten he kuvailevat ne muille ja laittavat kategorioihin ”Glad/Iloinen”, ”Sad/Surullinen” tai ”Mad/Vihainen” sen mukaan mitä tunnetiloja kortilla oleva asia aiheutti. Asian ei tarvitse olla täysin suoraan tiimiin tai sprinttiin liittyvä. Seuraavaksi kortit jaetaan ryhmiin ja osallistujat valitsevat äänestämällä mitä näistä käsitellään yhdessä. Pääpainon tulisi olla seuraavassa sprintissä, ts. miten asian suhteen voisi toimia. Tätä jatketaan kunnes asiat tai aika loppuvat (kesto  x–60 min).
-
-Change 2
