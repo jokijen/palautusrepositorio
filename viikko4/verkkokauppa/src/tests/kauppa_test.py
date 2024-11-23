@@ -41,7 +41,7 @@ class TestKauppa(unittest.TestCase):
         # alustetaan kauppa
         self.kauppa = Kauppa(self.varasto_mock, self.pankki_mock, self.viitegeneraattori_mock)
     
-    
+
     def test_ostoksen_paatyttya_pankin_metodia_tilisiirto_kutsutaan(self):
 
         # tehdään ostokset
@@ -124,3 +124,15 @@ class TestKauppa(unittest.TestCase):
         self.kauppa.tilimaksu("pekka", "12345")
 
         self.pankki_mock.tilisiirto.assert_called_with(ANY, 2, ANY, ANY, ANY)
+
+    def test_poistetaan_tuote_korista(self):
+        self.kauppa.aloita_asiointi()
+        self.kauppa.lisaa_koriin(1)
+
+        # varmistetaan, että kori ei ole tyhjä
+        self.assertNotEqual(self.kauppa._ostoskori._tuotteet, [])
+  
+        self.kauppa.poista_korista(1)
+
+        # varmistetaan, että kori on tyhjä
+        self.assertEqual(self.kauppa._ostoskori._tuotteet, [])
