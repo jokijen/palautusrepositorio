@@ -1,55 +1,56 @@
 class TennisGame:
     def __init__(self, player1_name, player2_name):
-        self.player1_name = player1_name
-        self.player2_name = player2_name
-        self.m_score1 = 0
-        self.m_score2 = 0
+        self.player1 = player1_name
+        self.player2 = player2_name
+        self.player1_points = 0
+        self.player2_points = 0
 
     def won_point(self, player_name):
-        if player_name == "player1":
-            self.m_score1 = self.m_score1 + 1
+        # Player 1 wins point
+        if player_name == self.player1:
+            self.player1_points += 1
+        # Player 2 wins point
         else:
-            self.m_score2 = self.m_score2 + 1
+            self.player2_points += 1
 
     def get_score(self):
-        score = ""
-        temp_score = 0
+        if self.player1_points == self.player2_points:
+            return self._get_even_score()
 
-        if self.m_score1 == self.m_score2:
-            if self.m_score1 == 0:
-                score = "Love-All"
-            elif self.m_score1 == 1:
-                score = "Fifteen-All"
-            elif self.m_score1 == 2:
-                score = "Thirty-All"
-            else:
-                score = "Deuce"
-        elif self.m_score1 >= 4 or self.m_score2 >= 4:
-            minus_result = self.m_score1 - self. m_score2
-
-            if minus_result == 1:
-                score = "Advantage player1"
-            elif minus_result == -1:
-                score = "Advantage player2"
-            elif minus_result >= 2:
-                score = "Win for player1"
-            else:
-                score = "Win for player2"
+        elif self.player1_points >= 4 or self.player2_points >= 4:
+            return self._get_advantage_or_win_score()
+        
         else:
-            for i in range(1, 3):
-                if i == 1:
-                    temp_score = self.m_score1
-                else:
-                    score = score + "-"
-                    temp_score = self.m_score2
+            return self._get_regular_score()
 
-                if temp_score == 0:
-                    score = score + "Love"
-                elif temp_score == 1:
-                    score = score + "Fifteen"
-                elif temp_score == 2:
-                    score = score + "Thirty"
-                elif temp_score == 3:
-                    score = score + "Forty"
 
-        return score
+    def _get_even_score(self):
+        score_dict = {0: "Love-All", 1: "Fifteen-All", 2: "Thirty-All"}
+        if self.player1_points in score_dict:
+            return score_dict[self.player1_points]
+        
+        # If the game is tied with 3 or more points each, the score is always called "Deuce"
+        else:
+            return "Deuce"
+        
+    def _get_advantage_or_win_score(self):
+        point_difference = self.player1_points - self.player2_points
+
+        if point_difference == 1:
+            return "Advantage player1"
+        elif point_difference == -1:
+            return "Advantage player2"
+        elif point_difference >= 2:
+            return "Win for player1"
+        else:
+            return "Win for player2"
+
+    def _get_regular_score(self):
+        point_names = {
+            0: "Love",
+            1: "Fifteen",
+            2: "Thirty",
+            3: "Forty"
+            }
+        
+        return f"{point_names[self.player1_points]}-{point_names[self.player2_points]}"
