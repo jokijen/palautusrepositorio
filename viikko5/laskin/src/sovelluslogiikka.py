@@ -16,3 +16,31 @@ class Sovelluslogiikka:
 
     def arvo(self):
         return self._arvo
+
+
+class Summa:
+    def __init__(self, sovelluslogiikka, lue_syote):
+        self._sovelluslogiikka = sovelluslogiikka
+        self._lue_syote = lue_syote
+
+    def suorita(self):
+        syote = int(self._lue_syote())
+        self._sovelluslogiikka.plus(syote)
+
+
+class Erotus:
+    def __init__(self, sovelluslogiikka, lue_syote):
+        self._sovelluslogiikka = sovelluslogiikka
+        self._lue_syote = lue_syote
+
+    def suorita(self):
+        syote = int(self._lue_syote())
+        self._sovelluslogiikka.miinus(syote)
+
+
+class Nollaus:
+    def __init__(self, sovelluslogiikka):
+        self._sovelluslogiikka = sovelluslogiikka
+
+    def suorita(self):
+        self._sovelluslogiikka.nollaa()
