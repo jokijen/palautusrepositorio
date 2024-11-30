@@ -1,12 +1,14 @@
 class Sovelluslogiikka:
     def __init__(self, arvo=0):
         self._arvo = arvo
+        self._arvolista = [self._arvo]
 
     def miinus(self, operandi):
         self._arvo = self._arvo - operandi
 
     def plus(self, operandi):
         self._arvo = self._arvo + operandi
+        self.lisaa_arvolistalle()
 
     def nollaa(self):
         self._arvo = 0
@@ -16,6 +18,13 @@ class Sovelluslogiikka:
 
     def arvo(self):
         return self._arvo
+    
+    def lisaa_arvolistalle(self):
+        uusi_arvo = self.arvo()
+        self._arvolista.append(uusi_arvo)
+
+    def kumoa(self):
+        self._arvo = self._arvolista[-2]
 
 
 class Summa:
@@ -44,3 +53,11 @@ class Nollaus:
 
     def suorita(self):
         self._sovelluslogiikka.nollaa()
+
+
+class Kumoa: 
+    def __init__(self, sovelluslogiikka):
+        self._sovelluslogiikka = sovelluslogiikka
+
+    def suorita(self):
+        self._sovelluslogiikka.kumoa()

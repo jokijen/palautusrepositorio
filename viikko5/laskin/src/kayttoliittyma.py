@@ -1,6 +1,6 @@
 from enum import Enum
 from tkinter import ttk, constants, StringVar, Entry
-from sovelluslogiikka import Summa, Erotus, Nollaus
+from sovelluslogiikka import Summa, Erotus, Nollaus, Kumoa
 
 
 class Komento(Enum):
@@ -20,8 +20,8 @@ class Kayttoliittyma:
         self._komennot = {
             Komento.SUMMA: Summa(sovelluslogiikka, self._lue_syote), 
             Komento.EROTUS: Erotus(sovelluslogiikka, self._lue_syote), 
-            Komento.NOLLAUS: Nollaus(sovelluslogiikka)
-            # Komento.KUMOA: Kumoa(sovelluslogiikka, self._lue_syote)
+            Komento.NOLLAUS: Nollaus(sovelluslogiikka),
+            Komento.KUMOA: Kumoa(sovelluslogiikka)
         }
 
     def _lue_syote(self):
